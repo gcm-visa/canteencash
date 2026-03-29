@@ -30,6 +30,8 @@
 </head>
 <body>
 
+
+  <button id="installBtn" style="display:none;">Install App</button>
   <h1>Canteen Cash</h1>
 <p>Loading app...</p>
 <button onclick="openApp()">Launch</button>
@@ -45,6 +47,24 @@ function openApp() {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
+  <script>
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const installBtn = document.getElementById('installBtn');
+  installBtn.style.display = 'block';
+
+  installBtn.addEventListener('click', () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+    });
+  });
+});
+</script>
 </script>
 
 </body>
