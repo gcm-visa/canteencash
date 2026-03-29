@@ -1,14 +1,13 @@
-const CACHE_NAME = "gas-pwa-v1";
-const urlsToCache = ["/", "/index.html"];
+const CACHE_NAME = "canteen-pwa-v1";
 
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-  );
+self.addEventListener("install", e => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", e => {
+  return self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
-  event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
-  );
+  // just pass through (no caching needed for now)
 });
