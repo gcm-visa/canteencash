@@ -1,7 +1,7 @@
 {
-  "name": "My GAS App",
-  "short_name": "GAS App",
-  "start_url": "/",
+  "name": "Canteen Cash",
+  "short_name": "Canteen",
+  "start_url": "/canteencash/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d6efd",
