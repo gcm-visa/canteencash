@@ -4,33 +4,44 @@
   <meta charset="UTF-8">
   <title>My App</title>
 
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#0d6efd">
-
-  <!-- iOS support -->
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <style>
-    html, body {
+    body {
       margin: 0;
-      height: 100%;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-direction: column;
     }
-    iframe {
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #0d6efd;
+      color: white;
       border: none;
-      width: 100%;
-      height: 100%;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
 
-<iframe src="https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbwTWG64jn7L0VDRlN7s3u8_X3MWxb5H_7l0SvvjZ964A_lAnOblCP58kdy4iL18NejGpA/exec"></iframe>
+<h2>Open App</h2>
+<button onclick="openApp()">Launch</button>
 
 <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
+function openApp() {
+  window.location.href = "https://script.google.com/a/macros/gcm.edu.ph/s/AKfycbwTWG64jn7L0VDRlN7s3u8_X3MWxb5H_7l0SvvjZ964A_lAnOblCP58kdy4iL18NejGpA/exec";
+}
+
+// Register service worker FIRST
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
 
 </body>
